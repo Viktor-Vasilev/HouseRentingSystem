@@ -16,7 +16,7 @@ namespace HouseRentingSystem.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await houseService.LAstThreeHouses();
+            var model = await houseService.LastThreeHouses();
 
             return View(model);
         }

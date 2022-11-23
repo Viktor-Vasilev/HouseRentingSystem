@@ -4,7 +4,7 @@ namespace HouseRentingSystem.Core.Contracts
 {
     public interface IHouseService
     {
-        Task<IEnumerable<HouseHomeModel>> LAstThreeHouses();
+        Task<IEnumerable<HouseHomeModel>> LastThreeHouses();
 
         Task<IEnumerable<HouseCategoryModel>> AllCategories();
 
@@ -20,5 +20,28 @@ namespace HouseRentingSystem.Core.Contracts
             int housesPerPage = 1);
 
         Task<IEnumerable<string>> AllCategoriesNames();
+
+        Task<IEnumerable<HouseServiceModel>> AllHousesByAgentId(int id);
+
+        Task<IEnumerable<HouseServiceModel>> AllHousesByUserId(string userid);
+
+        Task<HouseDetailsModel> HouseDetailsById(int id);
+
+        Task<bool> Exists(int id);
+
+        Task Edit(int houseId, HouseModel model);
+
+        Task<bool> HasAgentWithId(int houseId, string currentUserId);
+
+        Task<int> GetHouseCategoryById(int houseId);
+
+        Task Delete(int houseId);
+
+        Task<bool> IsRented(int houseId);
+
+        Task<bool> IsRentedByUserId(int houseId, string currentUserId);
+
+        Task Rent(int houseId, string currentUserId);
     }
+
 }
