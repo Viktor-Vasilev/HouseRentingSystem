@@ -276,6 +276,15 @@ namespace HouseRentingSystem.Core.Services
                 .ToListAsync();
         }
 
+        public async Task Leave(int houseId)
+        {
+            var house = await repo.GetByIdAsync<House>(houseId);
+            guard.AgainstNull(house, "House cannot be found!");
+            house.RenterId = null;
+
+            await repo.SaveChangesAsync();
+        }
+
         public async Task Rent(int houseId, string currentUserId)
         {
             var house = await repo.GetByIdAsync<House>(houseId);
